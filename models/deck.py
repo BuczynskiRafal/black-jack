@@ -8,9 +8,7 @@ class FrenchDeck:
     suits = "spades diamonds clubs hearts".split()
 
     def __init__(self):
-        self._cards = [
-            Card(rank, suit) for rank in self.ranks for suit in self.suits
-        ]
+        self._cards = [Card(rank, suit) for rank in self.ranks for suit in self.suits]
 
     def __len__(self):
         return len(self._cards)
@@ -25,4 +23,5 @@ class FrenchDeck:
     def shuffle_cards(self):
         return random.shuffle(self._cards)
 
-
+    def sort_cards(self):
+        return sorted(self._cards, key=lambda x: x[0])
