@@ -4,7 +4,7 @@ from models.card import Card
 
 
 class FrenchDeck:
-    ranks = [str(n) for n in range(2, 11)] + list("JPQKA")
+    ranks = [str(n) for n in range(2, 11)] + list("JQKA")
     suits = "spades diamonds clubs hearts".split()
 
     def __init__(self):
@@ -17,11 +17,12 @@ class FrenchDeck:
         return self._cards[position]
 
     def get_random_card(self):
-        rand_index = random.randint(1, len(self._cards))
+        rand_index = random.randint(0, len(self._cards))
         return self._cards.pop(rand_index)
 
     def shuffle_cards(self):
         return random.shuffle(self._cards)
 
+    # Doesn't work properly
     def sort_cards(self):
         return sorted(self._cards, key=lambda x: x[0])

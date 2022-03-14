@@ -7,12 +7,12 @@ from models.deck import FrenchDeck
 
 @fixture
 def t_card():
-    return Card()
+    return Card(rank='4', suit='clubs')
 
 
 @fixture
 def t_player():
-    return Player()
+    return Player(name='test_player')
 
 
 @fixture

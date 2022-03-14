@@ -7,6 +7,9 @@ class Player:
         self.cards = []
         self._score = 0
 
+    def take_card(self):
+        self.cards.append(FrenchDeck.get_random_card())
+
     def sort_cards(self):
         return sorted(self.cards, key=lambda x: x[0])
 
@@ -17,12 +20,14 @@ class Player:
     def score(self):
         if Player.check_black_jack(self):
             self._score = 21
-        elif Player.sort_cards(self)[0][0] == "A" and Player.sort_cards(self)[1][0] in "JPQK" and len(self.cards) == 2:
+        elif Player.sort_cards(self)[0][0] == "A" and Player.sort_cards(self)[1][0] in "JQK" and len(self.cards) == 2:
             self._score = 21
         else:
-            for rank, _ in self.cards:
-                if rank not in "JPQKA":
+            try:
+                for rank, _ in self.cards:
                     self._score += int(rank)
-                else:
-                    self._score += 10
+            except (TypeError, ValueError):
+                self._score += 10
 
+    def check_game_over(self):
+        return True if self._score > 21 else False
