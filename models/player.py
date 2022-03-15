@@ -1,4 +1,5 @@
 from models.deck import FrenchDeck
+from models.deck import deck
 
 
 class Player:
@@ -8,7 +9,11 @@ class Player:
         self._score = 0
 
     def take_card(self):
-        self.cards.append(FrenchDeck.get_random_card())
+        self.cards.append(deck.get_random_card())
+
+    def take_two_cards(self):
+        self.cards.append(deck.get_random_card())
+        self.cards.append(deck.get_random_card())
 
     def sort_cards(self):
         return sorted(self.cards, key=lambda x: x[0])
@@ -31,3 +36,7 @@ class Player:
 
     def check_game_over(self):
         return True if self._score > 21 else False
+
+
+
+

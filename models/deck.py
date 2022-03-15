@@ -26,3 +26,6 @@ class FrenchDeck:
     # Doesn't work properly
     def sort_cards(self):
         return sorted(self._cards, key=lambda x: x[0])
+
+
+deck = FrenchDeck()
