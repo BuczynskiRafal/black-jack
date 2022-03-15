@@ -25,7 +25,10 @@ class FrenchDeck:
 
     # Doesn't work properly
     def sort_cards(self):
-        return sorted(self._cards, key=lambda x: x[0])
+        try:
+            self._cards.sort(key=lambda x: int(x[0]))
+        except (TypeError, ValueError):
+            self._cards.sort(key=lambda x: x[0])
 
 
 deck = FrenchDeck()
