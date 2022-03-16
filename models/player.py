@@ -38,5 +38,6 @@ class Player:
         return True if self._score > 21 else False
 
 
-
+human = Player(name="Human")
+croupier = Player(name="Croupier")
 
