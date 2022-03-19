@@ -19,7 +19,7 @@ class Player:
         return sorted(self.cards, key=lambda x: x[0])
 
     def check_black_jack(self):
-        if self.cards[0][0] and self.cards[1][0] == "A" and len(self.cards) == 2:
+        if self.cards[0][0] == "A" and self.cards[1][0] == "A" and len(self.cards) == 2:
             return True
 
     def score(self):
@@ -28,11 +28,11 @@ class Player:
         elif Player.sort_cards(self)[0][0] == "A" and Player.sort_cards(self)[1][0] in "JQK" and len(self.cards) == 2:
             self._score = 21
         else:
-            try:
-                for rank, _ in self.cards:
+            for rank, _ in self.cards:
+                try:
                     self._score += int(rank)
-            except (TypeError, ValueError):
-                self._score += 10
+                except (TypeError, ValueError):
+                    self._score += 10
 
     def check_game_over(self):
         return True if self._score > 21 else False
