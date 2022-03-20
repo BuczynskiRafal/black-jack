@@ -1,22 +1,21 @@
-# from pytest import fixture
-#
-# from models.card import Card
-# from models.player import Player
-# from models.deck import FrenchDeck
-#
-#
-# @fixture
-# def t_card():
-#     return Card(rank='4', suit='clubs')
-#
-#
+from pytest import fixture
+
+from models.card import Card
+from models.deck import Deck
+
+
+@fixture
+def t_card():
+    return Card('hearts', 'Ace')
+
+
+@fixture
+def t_deck():
+    return Deck()
+
+
 # @fixture
 # def t_player():
 #     return Player(name='test_player')
-#
-#
-# @fixture
-# def t_deck():
-#     return FrenchDeck()
 #
 #

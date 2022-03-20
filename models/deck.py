@@ -1,10 +1,10 @@
-# """This module contains a simple deck class build on a card class."""
-#
-# import random
-#
-# from models.card import Card
-#
-#
+"""This module contains a simple deck class build on a card class."""
+
+import random
+
+from models.card import Card
+
+
 # class FrenchDeck:
 #     """
 #     FrenchDeck class allow you to create single object contained all
@@ -22,24 +22,18 @@
 #
 #     def __getitem__(self, position):
 #         return self._cards[position]
-#
-#     def get_random_card(self):
-#         """
-#         Method allow to take random card from deck.
-#         :rtype: object
-#         """
-#         rand_index = random.randint(0, len(self._cards))
-#         return self._cards.pop(rand_index)
-#
-#     def shuffle_cards(self):
-#         return random.shuffle(self._cards)
-#
-#     # Doesn't work properly
-#     def sort_cards(self):
-#         try:
-#             self._cards.sort(key=lambda x: int(x[0]))
-#         except (TypeError, ValueError):
-#             self._cards.sort(key=lambda x: x[0])
-#
-#
-# deck = FrenchDeck()
+
+class Deck:
+    def __init__(self) -> None:
+        self.cards = [
+            Card(color=color, value=value)
+            for color in Card.possible_colors
+            for value in Card.possible_values
+        ]
+
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    def take_card(self):
+        """Take one card from the deck."""
+        self.cards.pop()
