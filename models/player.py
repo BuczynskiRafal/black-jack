@@ -28,6 +28,7 @@ class Player:
         elif Player.sort_cards(self)[0][0] == "A" and Player.sort_cards(self)[1][0] in "JQK" and len(self.cards) == 2:
             self._score = 21
         else:
+            self._score = 0
             for rank, _ in self.cards:
                 try:
                     self._score += int(rank)
