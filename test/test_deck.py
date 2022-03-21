@@ -14,19 +14,22 @@ def test_deck(t_deck):
         heart_cards = [card for card in cards if card[1] == '♡']
         assert len(heart_cards) == 13
 
+
 def test_shuffle(t_deck):
     """Test if the deck is shuffled correctly."""
     shuffled = t_deck.shuffle()
     assert t_deck.cards != shuffled
 
-def test_take_card(t_deck):
+
+def test_hit(t_deck):
     """Test if the card is correctly drawn from the deck."""
     last_card = t_deck.cards[-1]
-    take_card = t_deck.take_card()
-    assert last_card == take_card
+    hit = t_deck.hit()
+    assert last_card == hit
+
 
 def test_deck_count_card(t_deck):
     """There is no check or drawn card in the deck."""
-    card = t_deck.take_card()
+    card = t_deck.hit()
     assert len(t_deck.cards) == 51
     assert card not in t_deck.cards

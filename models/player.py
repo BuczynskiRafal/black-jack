@@ -1,44 +1,38 @@
-# from models.deck import FrenchDeck
-# from models.deck import deck
-#
-#
-# class Player:
-#     def __init__(self, name):
-#         self._name = name
-#         self.cards = []
-#         self._score = 0
-#
-#     def take_card(self):
-#         self.cards.append(deck.get_random_card())
-#
-#     def take_two_cards(self):
-#         self.cards.append(deck.get_random_card())
-#         self.cards.append(deck.get_random_card())
-#
-#     def sort_cards(self):
-#         return sorted(self.cards, key=lambda x: x[0])
-#
-#     def check_black_jack(self):
-#         if self.cards[0][0] == "A" and self.cards[1][0] == "A" and len(self.cards) == 2:
-#             return True
-#
-#     def score(self):
-#         if Player.check_black_jack(self):
-#             self._score = 21
-#         elif Player.sort_cards(self)[0][0] == "A" and Player.sort_cards(self)[1][0] in "JQK" and len(self.cards) == 2:
-#             self._score = 21
-#         else:
-#             self._score = 0
-#             for rank, _ in self.cards:
-#                 try:
-#                     self._score += int(rank)
-#                 except (TypeError, ValueError):
-#                     self._score += 10
-#
-#     def check_game_over(self):
-#         return True if self._score > 21 else False
-#
-#
-# human = Player(name="Human")
-# croupier = Player(name="Croupier")
-#
+from models.card import Card
+
+
+class Player:
+    def __init__(self):
+        self.cards = []
+
+    def take_card(self, card: Card):
+        self.cards.append(card)
+
+    def calculate_points(self):
+        points = 0
+        number_of_aces = len([card for card in self.cards if card.value == 'Ace'])
+        if number_of_aces == 2:
+            return 21
+        if number_of_aces == 1 and len(self.cards) == 2:
+            return 10
+        for card in self.cards:
+            if card.value in ['Ace', ]:
+                points += 1
+            if card.value in ['Jack', 'Queen', 'King']:
+                points += 10
+            else:
+                points += card.value
+        return points
+
+
+player = Player()
+first_card = Card('hearts', 'Ace')
+second_card = Card('spades', 'Ace')
+third_card = Card('diamonds', 'Ace')
+
+player.take_card(first_card)
+player.take_card(second_card)
+player.take_card(third_card)
+for card in player.cards:
+    print(card.value)
+print(player.calculate_points())

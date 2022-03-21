@@ -2,6 +2,7 @@ from pytest import fixture
 
 from models.card import Card
 from models.deck import Deck
+from models.player import Player
 
 
 @fixture
@@ -14,8 +15,8 @@ def t_deck():
     return Deck()
 
 
-# @fixture
-# def t_player():
-#     return Player(name='test_player')
-#
-#
+@fixture
+def t_player():
+    return Player()
+
+

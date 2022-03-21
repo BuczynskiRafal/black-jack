@@ -34,6 +34,6 @@ class Deck:
     def shuffle(self):
         random.shuffle(self.cards)
 
-    def take_card(self):
+    def hit(self):
         """Take one card from the deck."""
         self.cards.pop()
