@@ -25,7 +25,7 @@ class Card:
     }
     possible_values = list(range(2, 11)) + ['Ace', 'Jack', 'Queen', 'King']
 
-    def __init__(self, color, value) -> None:
+    def __init__(self, color, value):
         if color not in self.possible_colors:
             raise InvalidColor('Invalid card color.')
         self.color = self.possible_colors[color]
@@ -36,3 +36,4 @@ class Card:
 
     def __repr__(self) -> str:
         return f'{self.value}, {self.color}'
+

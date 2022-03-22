@@ -16,23 +16,11 @@ class Player:
         if number_of_aces == 1 and len(self.cards) == 2:
             return 10
         for card in self.cards:
-            if card.value in ['Ace', ]:
+            if card.value == 'Ace':
                 points += 1
-            if card.value in ['Jack', 'Queen', 'King']:
+            elif card.value in ['Jack', 'Queen', 'King']:
                 points += 10
             else:
                 points += card.value
         return points
 
-
-player = Player()
-first_card = Card('hearts', 'Ace')
-second_card = Card('spades', 'Ace')
-third_card = Card('diamonds', 'Ace')
-
-player.take_card(first_card)
-player.take_card(second_card)
-player.take_card(third_card)
-for card in player.cards:
-    print(card.value)
-print(player.calculate_points())
