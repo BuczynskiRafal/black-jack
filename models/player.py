@@ -1,5 +1,5 @@
 from models.card import Card
-
+from models.game import GameOverException
 
 class Player:
     def __init__(self):
@@ -22,5 +22,7 @@ class Player:
                 points += 10
             else:
                 points += card.value
+        if points > 21:
+            raise GameOverException('Number of points exceeded!')
         return points
 
