@@ -1,15 +1,5 @@
 from models.deck import Deck
-from models.player import Player
-
-
-class GameOverException(Exception):
-    """Game over exception"""
-    pass
-
-
-class GameOverUserException(Exception):
-    """Game over exception"""
-    pass
+from models.player import Player, GameOverException, GameOverUserException
 
 
 class Game:
@@ -23,7 +13,7 @@ class Game:
         print("Type 1 to take card.")
         print("Type 2 to pass.")
 
-    def user_plays(self):
+    def _user_plays(self):
         user = Player()
         print(self.deck.__dict__)
         for _ in range(2):
@@ -44,6 +34,6 @@ class Game:
 
     def play(self):
         try:
-            self.user_plays()
-        except GameOverException as e:
-            raise GameOverUserException from e
+            self._user_plays()
+        except GameOverException as error:
+            raise GameOverUserException from error
