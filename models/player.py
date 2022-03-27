@@ -1,14 +1,5 @@
 from models.card import Card
-
-
-class GameOverException(Exception):
-    """Game over exception"""
-    pass
-
-
-class GameOverUserException(Exception):
-    """Game over exception"""
-    pass
+from exceptions import GameOverException
 
 
 class Player:

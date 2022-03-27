@@ -18,4 +18,7 @@ class Deck:
 
     def hit(self):
         """Take one card from the deck."""
-        self.cards.pop()
+        return self.cards.pop()
+
+
+deck = Deck()
